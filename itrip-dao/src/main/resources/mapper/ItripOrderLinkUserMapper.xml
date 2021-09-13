@@ -20,4 +20,87 @@
         linkUserName,creationDate,createdBy,
         modifyDate,modifiedBy
     </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from itrip_order_link_user
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from itrip_order_link_user
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripOrderLinkUser" useGeneratedKeys="true">
+        insert into itrip_order_link_user
+        ( id,orderId,linkUserId
+        ,linkUserName,creationDate,createdBy
+        ,modifyDate,modifiedBy)
+        values (#{id,jdbcType=BIGINT},#{orderId,jdbcType=BIGINT},#{linkUserId,jdbcType=BIGINT}
+        ,#{linkUserName,jdbcType=VARCHAR},#{creationDate,jdbcType=TIMESTAMP},#{createdBy,jdbcType=BIGINT}
+        ,#{modifyDate,jdbcType=TIMESTAMP},#{modifiedBy,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripOrderLinkUser" useGeneratedKeys="true">
+        insert into itrip_order_link_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="orderId != null">orderId,</if>
+                <if test="linkUserId != null">linkUserId,</if>
+                <if test="linkUserName != null">linkUserName,</if>
+                <if test="creationDate != null">creationDate,</if>
+                <if test="createdBy != null">createdBy,</if>
+                <if test="modifyDate != null">modifyDate,</if>
+                <if test="modifiedBy != null">modifiedBy,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">id = #{id,jdbcType=BIGINT},</if>
+                <if test="orderId != null">orderId = #{orderId,jdbcType=BIGINT},</if>
+                <if test="linkUserId != null">linkUserId = #{linkUserId,jdbcType=BIGINT},</if>
+                <if test="linkUserName != null">linkUserName = #{linkUserName,jdbcType=VARCHAR},</if>
+                <if test="creationDate != null">creationDate = #{creationDate,jdbcType=TIMESTAMP},</if>
+                <if test="createdBy != null">createdBy = #{createdBy,jdbcType=BIGINT},</if>
+                <if test="modifyDate != null">modifyDate = #{modifyDate,jdbcType=TIMESTAMP},</if>
+                <if test="modifiedBy != null">modifiedBy = #{modifiedBy,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cskt.pojo.ItripOrderLinkUser">
+        update itrip_order_link_user
+        <set>
+                <if test="orderId != null">
+                    orderId = #{orderId,jdbcType=BIGINT},
+                </if>
+                <if test="linkUserId != null">
+                    linkUserId = #{linkUserId,jdbcType=BIGINT},
+                </if>
+                <if test="linkUserName != null">
+                    linkUserName = #{linkUserName,jdbcType=VARCHAR},
+                </if>
+                <if test="creationDate != null">
+                    creationDate = #{creationDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createdBy != null">
+                    createdBy = #{createdBy,jdbcType=BIGINT},
+                </if>
+                <if test="modifyDate != null">
+                    modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="modifiedBy != null">
+                    modifiedBy = #{modifiedBy,jdbcType=BIGINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cskt.pojo.ItripOrderLinkUser">
+        update itrip_order_link_user
+        set 
+            orderId =  #{orderId,jdbcType=BIGINT},
+            linkUserId =  #{linkUserId,jdbcType=BIGINT},
+            linkUserName =  #{linkUserName,jdbcType=VARCHAR},
+            creationDate =  #{creationDate,jdbcType=TIMESTAMP},
+            createdBy =  #{createdBy,jdbcType=BIGINT},
+            modifyDate =  #{modifyDate,jdbcType=TIMESTAMP},
+            modifiedBy =  #{modifiedBy,jdbcType=BIGINT}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
 </mapper>
