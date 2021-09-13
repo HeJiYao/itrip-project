@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskt.mapper.ItripUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.cskt.pojo.ItripUser">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userCode" column="userCode" jdbcType="VARCHAR"/>
+            <result property="userPassword" column="userPassword" jdbcType="VARCHAR"/>
+            <result property="userType" column="userType" jdbcType="INTEGER"/>
+            <result property="flatID" column="flatID" jdbcType="BIGINT"/>
+            <result property="userName" column="userName" jdbcType="VARCHAR"/>
+            <result property="weChat" column="weChat" jdbcType="VARCHAR"/>
+            <result property="QQ" column="QQ" jdbcType="VARCHAR"/>
+            <result property="weibo" column="weibo" jdbcType="VARCHAR"/>
+            <result property="baidu" column="baidu" jdbcType="VARCHAR"/>
+            <result property="creationDate" column="creationDate" jdbcType="TIMESTAMP"/>
+            <result property="createdBy" column="createdBy" jdbcType="BIGINT"/>
+            <result property="modifyDate" column="modifyDate" jdbcType="TIMESTAMP"/>
+            <result property="modifiedBy" column="modifiedBy" jdbcType="BIGINT"/>
+            <result property="activated" column="activated" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userCode,userPassword,
+        userType,flatID,userName,
+        weChat,QQ,weibo,
+        baidu,creationDate,createdBy,
+        modifyDate,modifiedBy,activated
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from itrip_user
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from itrip_user
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripUser" useGeneratedKeys="true">
+        insert into itrip_user
+        ( id,userCode,userPassword
+        ,userType,flatID,userName
+        ,weChat,QQ,weibo
+        ,baidu,creationDate,createdBy
+        ,modifyDate,modifiedBy,activated
+        )
+        values (#{id,jdbcType=BIGINT},#{userCode,jdbcType=VARCHAR},#{userPassword,jdbcType=VARCHAR}
+        ,#{userType,jdbcType=INTEGER},#{flatID,jdbcType=BIGINT},#{userName,jdbcType=VARCHAR}
+        ,#{weChat,jdbcType=VARCHAR},#{QQ,jdbcType=VARCHAR},#{weibo,jdbcType=VARCHAR}
+        ,#{baidu,jdbcType=VARCHAR},#{creationDate,jdbcType=TIMESTAMP},#{createdBy,jdbcType=BIGINT}
+        ,#{modifyDate,jdbcType=TIMESTAMP},#{modifiedBy,jdbcType=BIGINT},#{activated,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripUser" useGeneratedKeys="true">
+        insert into itrip_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="userCode != null">userCode,</if>
+                <if test="userPassword != null">userPassword,</if>
+                <if test="userType != null">userType,</if>
+                <if test="flatID != null">flatID,</if>
+                <if test="userName != null">userName,</if>
+                <if test="weChat != null">weChat,</if>
+                <if test="QQ != null">QQ,</if>
+                <if test="weibo != null">weibo,</if>
+                <if test="baidu != null">baidu,</if>
+                <if test="creationDate != null">creationDate,</if>
+                <if test="createdBy != null">createdBy,</if>
+                <if test="modifyDate != null">modifyDate,</if>
+                <if test="modifiedBy != null">modifiedBy,</if>
+                <if test="activated != null">activated,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">id = #{id,jdbcType=BIGINT},</if>
+                <if test="userCode != null">userCode = #{userCode,jdbcType=VARCHAR},</if>
+                <if test="userPassword != null">userPassword = #{userPassword,jdbcType=VARCHAR},</if>
+                <if test="userType != null">userType = #{userType,jdbcType=INTEGER},</if>
+                <if test="flatID != null">flatID = #{flatID,jdbcType=BIGINT},</if>
+                <if test="userName != null">userName = #{userName,jdbcType=VARCHAR},</if>
+                <if test="weChat != null">weChat = #{weChat,jdbcType=VARCHAR},</if>
+                <if test="QQ != null">QQ = #{QQ,jdbcType=VARCHAR},</if>
+                <if test="weibo != null">weibo = #{weibo,jdbcType=VARCHAR},</if>
+                <if test="baidu != null">baidu = #{baidu,jdbcType=VARCHAR},</if>
+                <if test="creationDate != null">creationDate = #{creationDate,jdbcType=TIMESTAMP},</if>
+                <if test="createdBy != null">createdBy = #{createdBy,jdbcType=BIGINT},</if>
+                <if test="modifyDate != null">modifyDate = #{modifyDate,jdbcType=TIMESTAMP},</if>
+                <if test="modifiedBy != null">modifiedBy = #{modifiedBy,jdbcType=BIGINT},</if>
+                <if test="activated != null">activated = #{activated,jdbcType=INTEGER},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cskt.pojo.ItripUser">
+        update itrip_user
+        <set>
+                <if test="userCode != null">
+                    userCode = #{userCode,jdbcType=VARCHAR},
+                </if>
+                <if test="userPassword != null">
+                    userPassword = #{userPassword,jdbcType=VARCHAR},
+                </if>
+                <if test="userType != null">
+                    userType = #{userType,jdbcType=INTEGER},
+                </if>
+                <if test="flatID != null">
+                    flatID = #{flatID,jdbcType=BIGINT},
+                </if>
+                <if test="userName != null">
+                    userName = #{userName,jdbcType=VARCHAR},
+                </if>
+                <if test="weChat != null">
+                    weChat = #{weChat,jdbcType=VARCHAR},
+                </if>
+                <if test="QQ != null">
+                    QQ = #{QQ,jdbcType=VARCHAR},
+                </if>
+                <if test="weibo != null">
+                    weibo = #{weibo,jdbcType=VARCHAR},
+                </if>
+                <if test="baidu != null">
+                    baidu = #{baidu,jdbcType=VARCHAR},
+                </if>
+                <if test="creationDate != null">
+                    creationDate = #{creationDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createdBy != null">
+                    createdBy = #{createdBy,jdbcType=BIGINT},
+                </if>
+                <if test="modifyDate != null">
+                    modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="modifiedBy != null">
+                    modifiedBy = #{modifiedBy,jdbcType=BIGINT},
+                </if>
+                <if test="activated != null">
+                    activated = #{activated,jdbcType=INTEGER},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cskt.pojo.ItripUser">
+        update itrip_user
+        set 
+            userCode =  #{userCode,jdbcType=VARCHAR},
+            userPassword =  #{userPassword,jdbcType=VARCHAR},
+            userType =  #{userType,jdbcType=INTEGER},
+            flatID =  #{flatID,jdbcType=BIGINT},
+            userName =  #{userName,jdbcType=VARCHAR},
+            weChat =  #{weChat,jdbcType=VARCHAR},
+            QQ =  #{QQ,jdbcType=VARCHAR},
+            weibo =  #{weibo,jdbcType=VARCHAR},
+            baidu =  #{baidu,jdbcType=VARCHAR},
+            creationDate =  #{creationDate,jdbcType=TIMESTAMP},
+            createdBy =  #{createdBy,jdbcType=BIGINT},
+            modifyDate =  #{modifyDate,jdbcType=TIMESTAMP},
+            modifiedBy =  #{modifiedBy,jdbcType=BIGINT},
+            activated =  #{activated,jdbcType=INTEGER}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
