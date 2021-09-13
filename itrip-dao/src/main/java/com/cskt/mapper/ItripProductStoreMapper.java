@@ -1,23 +1,12 @@
 package com.cskt.mapper;
 
 import com.cskt.pojo.ItripProductStore;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @Entity com.cskt.pojo.ItripProductStore
  */
-public interface ItripProductStoreMapper {
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(ItripProductStore record);
-
-    int insertSelective(ItripProductStore record);
-
-    ItripProductStore selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(ItripProductStore record);
-
-    int updateByPrimaryKey(ItripProductStore record);
+public interface ItripProductStoreMapper extends BaseMapper<ItripProductStore> {
 
 }
 

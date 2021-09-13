@@ -1,23 +1,12 @@
 package com.cskt.mapper;
 
 import com.cskt.pojo.ItripHotelExtendProperty;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @Entity com.cskt.pojo.ItripHotelExtendProperty
  */
-public interface ItripHotelExtendPropertyMapper {
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(ItripHotelExtendProperty record);
-
-    int insertSelective(ItripHotelExtendProperty record);
-
-    ItripHotelExtendProperty selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(ItripHotelExtendProperty record);
-
-    int updateByPrimaryKey(ItripHotelExtendProperty record);
+public interface ItripHotelExtendPropertyMapper extends BaseMapper<ItripHotelExtendProperty> {
 
 }
 
