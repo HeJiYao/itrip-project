@@ -1,296 +1,538 @@
 package com.cskt.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
-import lombok.Data;
+import java.math.BigDecimal;
+
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
 
 /**
- * 订单表
- * @TableName itrip_hotel_order
- */
-@TableName(value ="itrip_hotel_order")
-@Data
-public class ItripHotelOrder implements Serializable {
+* 订单表
+* @TableName itrip_hotel_order
+*/
+public class ItripHotelOrder {
+
     /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
+    * 主键
+    */
+    @ApiModelProperty("主键")
     private Long id;
-
     /**
-     * 用户id
-     */
-    @TableField(value = "userId")
+    * 用户id
+    */
+    @ApiModelProperty("用户id")
     private Long userId;
-
     /**
-     * 订单类型(0:旅游产品 1:酒店产品 2：机票产品)
-     */
-    @TableField(value = "orderType")
+    * 订单类型(0:旅游产品 1:酒店产品 2：机票产品)
+    */
+    @ApiModelProperty("订单类型(0:旅游产品 1:酒店产品 2：机票产品)")
     private Integer orderType;
-
     /**
-     * 订单号
-     */
-    @TableField(value = "orderNo")
+    * 订单号
+    */
+    @ApiModelProperty("订单号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String orderNo;
-
     /**
-     * 交易编号
-     */
-    @TableField(value = "tradeNo")
+    * 交易编号
+    */
+    @ApiModelProperty("交易编号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String tradeNo;
-
     /**
-     * 冗余字段 酒店id
-     */
-    @TableField(value = "hotelId")
+    * 冗余字段 酒店id
+    */
+    @ApiModelProperty("冗余字段 酒店id")
     private Long hotelId;
-
     /**
-     * 冗余字段 酒店名称
-     */
-    @TableField(value = "hotelName")
+    * 冗余字段 酒店名称
+    */
+    @ApiModelProperty("冗余字段 酒店名称")
+    @Length(max= 255,message="编码长度不能超过255")
     private String hotelName;
-
     /**
-     * 房间id
-     */
-    @TableField(value = "roomId")
+    * 房间id
+    */
+    @ApiModelProperty("房间id")
     private Long roomId;
-
     /**
-     * 消耗数量
-     */
-    @TableField(value = "count")
+    * 消耗数量
+    */
+    @ApiModelProperty("消耗数量")
     private Integer count;
-
     /**
-     * 预订天数
-     */
-    @TableField(value = "bookingDays")
+    * 预订天数
+    */
+    @ApiModelProperty("预订天数")
     private Integer bookingDays;
-
     /**
-     * 入住时间
-     */
-    @TableField(value = "checkInDate")
+    * 入住时间
+    */
+    @ApiModelProperty("入住时间")
     private Date checkInDate;
-
     /**
-     * 退房时间
-     */
-    @TableField(value = "checkOutDate")
+    * 退房时间
+    */
+    @ApiModelProperty("退房时间")
     private Date checkOutDate;
-
     /**
-     * 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评）
-     */
-    @TableField(value = "orderStatus")
+    * 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评）
+    */
+    @ApiModelProperty("订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评）")
     private Integer orderStatus;
-
     /**
-     * 支付金额
-     */
-    @TableField(value = "payAmount")
+    * 支付金额
+    */
+    @ApiModelProperty("支付金额")
     private BigDecimal payAmount;
-
     /**
-     * 支付方式:1:支付宝 2:微信 3:到店付
-     */
-    @TableField(value = "payType")
+    * 支付方式:1:支付宝 2:微信 3:到店付
+    */
+    @ApiModelProperty("支付方式:1:支付宝 2:微信 3:到店付")
     private Integer payType;
-
     /**
-     * 联系手机号
-     */
-    @TableField(value = "noticePhone")
+    * 联系手机号
+    */
+    @ApiModelProperty("联系手机号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String noticePhone;
-
     /**
-     * 联系邮箱
-     */
-    @TableField(value = "noticeEmail")
+    * 联系邮箱
+    */
+    @ApiModelProperty("联系邮箱")
+    @Length(max= 255,message="编码长度不能超过255")
     private String noticeEmail;
-
     /**
-     * 特殊需求
-     */
-    @TableField(value = "specialRequirement")
+    * 特殊需求
+    */
+    @ApiModelProperty("特殊需求")
+    @Length(max= -1,message="编码长度不能超过-1")
     private String specialRequirement;
-
     /**
-     * 是否需要发票（0：不需要 1：需要）
-     */
-    @TableField(value = "isNeedInvoice")
+    * 是否需要发票（0：不需要 1：需要）
+    */
+    @ApiModelProperty("是否需要发票（0：不需要 1：需要）")
     private Integer isNeedInvoice;
-
     /**
-     * 发票类型（0：个人 1：公司）
-     */
-    @TableField(value = "invoiceType")
+    * 发票类型（0：个人 1：公司）
+    */
+    @ApiModelProperty("发票类型（0：个人 1：公司）")
     private Integer invoiceType;
-
     /**
-     * 发票抬头
-     */
-    @TableField(value = "invoiceHead")
+    * 发票抬头
+    */
+    @ApiModelProperty("发票抬头")
+    @Length(max= 255,message="编码长度不能超过255")
     private String invoiceHead;
-
     /**
-     * 入住人名称
-     */
-    @TableField(value = "linkUserName")
+    * 入住人名称
+    */
+    @ApiModelProperty("入住人名称")
+    @Length(max= 255,message="编码长度不能超过255")
     private String linkUserName;
-
     /**
-     * 0:WEB端 1:手机端 2:其他客户端
-     */
-    @TableField(value = "bookType")
+    * 0:WEB端 1:手机端 2:其他客户端
+    */
+    @ApiModelProperty("0:WEB端 1:手机端 2:其他客户端")
     private Integer bookType;
-
     /**
-     * 预定时间
-     */
-    @TableField(value = "creationDate")
+    * 预定时间
+    */
+    @ApiModelProperty("预定时间")
     private Date creationDate;
-
     /**
-     * 
-     */
-    @TableField(value = "createdBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long createdBy;
-
     /**
-     * 支付完成时间
-     */
-    @TableField(value = "modifyDate")
+    * 支付完成时间
+    */
+    @ApiModelProperty("支付完成时间")
     private Date modifyDate;
-
     /**
-     * 
-     */
-    @TableField(value = "modifiedBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long modifiedBy;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ItripHotelOrder other = (ItripHotelOrder) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getOrderType() == null ? other.getOrderType() == null : this.getOrderType().equals(other.getOrderType()))
-            && (this.getOrderNo() == null ? other.getOrderNo() == null : this.getOrderNo().equals(other.getOrderNo()))
-            && (this.getTradeNo() == null ? other.getTradeNo() == null : this.getTradeNo().equals(other.getTradeNo()))
-            && (this.getHotelId() == null ? other.getHotelId() == null : this.getHotelId().equals(other.getHotelId()))
-            && (this.getHotelName() == null ? other.getHotelName() == null : this.getHotelName().equals(other.getHotelName()))
-            && (this.getRoomId() == null ? other.getRoomId() == null : this.getRoomId().equals(other.getRoomId()))
-            && (this.getCount() == null ? other.getCount() == null : this.getCount().equals(other.getCount()))
-            && (this.getBookingDays() == null ? other.getBookingDays() == null : this.getBookingDays().equals(other.getBookingDays()))
-            && (this.getCheckInDate() == null ? other.getCheckInDate() == null : this.getCheckInDate().equals(other.getCheckInDate()))
-            && (this.getCheckOutDate() == null ? other.getCheckOutDate() == null : this.getCheckOutDate().equals(other.getCheckOutDate()))
-            && (this.getOrderStatus() == null ? other.getOrderStatus() == null : this.getOrderStatus().equals(other.getOrderStatus()))
-            && (this.getPayAmount() == null ? other.getPayAmount() == null : this.getPayAmount().equals(other.getPayAmount()))
-            && (this.getPayType() == null ? other.getPayType() == null : this.getPayType().equals(other.getPayType()))
-            && (this.getNoticePhone() == null ? other.getNoticePhone() == null : this.getNoticePhone().equals(other.getNoticePhone()))
-            && (this.getNoticeEmail() == null ? other.getNoticeEmail() == null : this.getNoticeEmail().equals(other.getNoticeEmail()))
-            && (this.getSpecialRequirement() == null ? other.getSpecialRequirement() == null : this.getSpecialRequirement().equals(other.getSpecialRequirement()))
-            && (this.getIsNeedInvoice() == null ? other.getIsNeedInvoice() == null : this.getIsNeedInvoice().equals(other.getIsNeedInvoice()))
-            && (this.getInvoiceType() == null ? other.getInvoiceType() == null : this.getInvoiceType().equals(other.getInvoiceType()))
-            && (this.getInvoiceHead() == null ? other.getInvoiceHead() == null : this.getInvoiceHead().equals(other.getInvoiceHead()))
-            && (this.getLinkUserName() == null ? other.getLinkUserName() == null : this.getLinkUserName().equals(other.getLinkUserName()))
-            && (this.getBookType() == null ? other.getBookType() == null : this.getBookType().equals(other.getBookType()))
-            && (this.getCreationDate() == null ? other.getCreationDate() == null : this.getCreationDate().equals(other.getCreationDate()))
-            && (this.getCreatedBy() == null ? other.getCreatedBy() == null : this.getCreatedBy().equals(other.getCreatedBy()))
-            && (this.getModifyDate() == null ? other.getModifyDate() == null : this.getModifyDate().equals(other.getModifyDate()))
-            && (this.getModifiedBy() == null ? other.getModifiedBy() == null : this.getModifiedBy().equals(other.getModifiedBy()));
+    /**
+    * 主键
+    */
+    private void setId(Long id){
+    this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getOrderType() == null) ? 0 : getOrderType().hashCode());
-        result = prime * result + ((getOrderNo() == null) ? 0 : getOrderNo().hashCode());
-        result = prime * result + ((getTradeNo() == null) ? 0 : getTradeNo().hashCode());
-        result = prime * result + ((getHotelId() == null) ? 0 : getHotelId().hashCode());
-        result = prime * result + ((getHotelName() == null) ? 0 : getHotelName().hashCode());
-        result = prime * result + ((getRoomId() == null) ? 0 : getRoomId().hashCode());
-        result = prime * result + ((getCount() == null) ? 0 : getCount().hashCode());
-        result = prime * result + ((getBookingDays() == null) ? 0 : getBookingDays().hashCode());
-        result = prime * result + ((getCheckInDate() == null) ? 0 : getCheckInDate().hashCode());
-        result = prime * result + ((getCheckOutDate() == null) ? 0 : getCheckOutDate().hashCode());
-        result = prime * result + ((getOrderStatus() == null) ? 0 : getOrderStatus().hashCode());
-        result = prime * result + ((getPayAmount() == null) ? 0 : getPayAmount().hashCode());
-        result = prime * result + ((getPayType() == null) ? 0 : getPayType().hashCode());
-        result = prime * result + ((getNoticePhone() == null) ? 0 : getNoticePhone().hashCode());
-        result = prime * result + ((getNoticeEmail() == null) ? 0 : getNoticeEmail().hashCode());
-        result = prime * result + ((getSpecialRequirement() == null) ? 0 : getSpecialRequirement().hashCode());
-        result = prime * result + ((getIsNeedInvoice() == null) ? 0 : getIsNeedInvoice().hashCode());
-        result = prime * result + ((getInvoiceType() == null) ? 0 : getInvoiceType().hashCode());
-        result = prime * result + ((getInvoiceHead() == null) ? 0 : getInvoiceHead().hashCode());
-        result = prime * result + ((getLinkUserName() == null) ? 0 : getLinkUserName().hashCode());
-        result = prime * result + ((getBookType() == null) ? 0 : getBookType().hashCode());
-        result = prime * result + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
-        result = prime * result + ((getCreatedBy() == null) ? 0 : getCreatedBy().hashCode());
-        result = prime * result + ((getModifyDate() == null) ? 0 : getModifyDate().hashCode());
-        result = prime * result + ((getModifiedBy() == null) ? 0 : getModifiedBy().hashCode());
-        return result;
+    /**
+    * 用户id
+    */
+    private void setUserId(Long userId){
+    this.userId = userId;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", orderType=").append(orderType);
-        sb.append(", orderNo=").append(orderNo);
-        sb.append(", tradeNo=").append(tradeNo);
-        sb.append(", hotelId=").append(hotelId);
-        sb.append(", hotelName=").append(hotelName);
-        sb.append(", roomId=").append(roomId);
-        sb.append(", count=").append(count);
-        sb.append(", bookingDays=").append(bookingDays);
-        sb.append(", checkInDate=").append(checkInDate);
-        sb.append(", checkOutDate=").append(checkOutDate);
-        sb.append(", orderStatus=").append(orderStatus);
-        sb.append(", payAmount=").append(payAmount);
-        sb.append(", payType=").append(payType);
-        sb.append(", noticePhone=").append(noticePhone);
-        sb.append(", noticeEmail=").append(noticeEmail);
-        sb.append(", specialRequirement=").append(specialRequirement);
-        sb.append(", isNeedInvoice=").append(isNeedInvoice);
-        sb.append(", invoiceType=").append(invoiceType);
-        sb.append(", invoiceHead=").append(invoiceHead);
-        sb.append(", linkUserName=").append(linkUserName);
-        sb.append(", bookType=").append(bookType);
-        sb.append(", creationDate=").append(creationDate);
-        sb.append(", createdBy=").append(createdBy);
-        sb.append(", modifyDate=").append(modifyDate);
-        sb.append(", modifiedBy=").append(modifiedBy);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    /**
+    * 订单类型(0:旅游产品 1:酒店产品 2：机票产品)
+    */
+    private void setOrderType(Integer orderType){
+    this.orderType = orderType;
     }
+
+    /**
+    * 订单号
+    */
+    private void setOrderNo(String orderNo){
+    this.orderNo = orderNo;
+    }
+
+    /**
+    * 交易编号
+    */
+    private void setTradeNo(String tradeNo){
+    this.tradeNo = tradeNo;
+    }
+
+    /**
+    * 冗余字段 酒店id
+    */
+    private void setHotelId(Long hotelId){
+    this.hotelId = hotelId;
+    }
+
+    /**
+    * 冗余字段 酒店名称
+    */
+    private void setHotelName(String hotelName){
+    this.hotelName = hotelName;
+    }
+
+    /**
+    * 房间id
+    */
+    private void setRoomId(Long roomId){
+    this.roomId = roomId;
+    }
+
+    /**
+    * 消耗数量
+    */
+    private void setCount(Integer count){
+    this.count = count;
+    }
+
+    /**
+    * 预订天数
+    */
+    private void setBookingDays(Integer bookingDays){
+    this.bookingDays = bookingDays;
+    }
+
+    /**
+    * 入住时间
+    */
+    private void setCheckInDate(Date checkInDate){
+    this.checkInDate = checkInDate;
+    }
+
+    /**
+    * 退房时间
+    */
+    private void setCheckOutDate(Date checkOutDate){
+    this.checkOutDate = checkOutDate;
+    }
+
+    /**
+    * 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评）
+    */
+    private void setOrderStatus(Integer orderStatus){
+    this.orderStatus = orderStatus;
+    }
+
+    /**
+    * 支付金额
+    */
+    private void setPayAmount(BigDecimal payAmount){
+    this.payAmount = payAmount;
+    }
+
+    /**
+    * 支付方式:1:支付宝 2:微信 3:到店付
+    */
+    private void setPayType(Integer payType){
+    this.payType = payType;
+    }
+
+    /**
+    * 联系手机号
+    */
+    private void setNoticePhone(String noticePhone){
+    this.noticePhone = noticePhone;
+    }
+
+    /**
+    * 联系邮箱
+    */
+    private void setNoticeEmail(String noticeEmail){
+    this.noticeEmail = noticeEmail;
+    }
+
+    /**
+    * 特殊需求
+    */
+    private void setSpecialRequirement(String specialRequirement){
+    this.specialRequirement = specialRequirement;
+    }
+
+    /**
+    * 是否需要发票（0：不需要 1：需要）
+    */
+    private void setIsNeedInvoice(Integer isNeedInvoice){
+    this.isNeedInvoice = isNeedInvoice;
+    }
+
+    /**
+    * 发票类型（0：个人 1：公司）
+    */
+    private void setInvoiceType(Integer invoiceType){
+    this.invoiceType = invoiceType;
+    }
+
+    /**
+    * 发票抬头
+    */
+    private void setInvoiceHead(String invoiceHead){
+    this.invoiceHead = invoiceHead;
+    }
+
+    /**
+    * 入住人名称
+    */
+    private void setLinkUserName(String linkUserName){
+    this.linkUserName = linkUserName;
+    }
+
+    /**
+    * 0:WEB端 1:手机端 2:其他客户端
+    */
+    private void setBookType(Integer bookType){
+    this.bookType = bookType;
+    }
+
+    /**
+    * 预定时间
+    */
+    private void setCreationDate(Date creationDate){
+    this.creationDate = creationDate;
+    }
+
+    /**
+    * 
+    */
+    private void setCreatedBy(Long createdBy){
+    this.createdBy = createdBy;
+    }
+
+    /**
+    * 支付完成时间
+    */
+    private void setModifyDate(Date modifyDate){
+    this.modifyDate = modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private void setModifiedBy(Long modifiedBy){
+    this.modifiedBy = modifiedBy;
+    }
+
+
+    /**
+    * 主键
+    */
+    private Long getId(){
+    return this.id;
+    }
+
+    /**
+    * 用户id
+    */
+    private Long getUserId(){
+    return this.userId;
+    }
+
+    /**
+    * 订单类型(0:旅游产品 1:酒店产品 2：机票产品)
+    */
+    private Integer getOrderType(){
+    return this.orderType;
+    }
+
+    /**
+    * 订单号
+    */
+    private String getOrderNo(){
+    return this.orderNo;
+    }
+
+    /**
+    * 交易编号
+    */
+    private String getTradeNo(){
+    return this.tradeNo;
+    }
+
+    /**
+    * 冗余字段 酒店id
+    */
+    private Long getHotelId(){
+    return this.hotelId;
+    }
+
+    /**
+    * 冗余字段 酒店名称
+    */
+    private String getHotelName(){
+    return this.hotelName;
+    }
+
+    /**
+    * 房间id
+    */
+    private Long getRoomId(){
+    return this.roomId;
+    }
+
+    /**
+    * 消耗数量
+    */
+    private Integer getCount(){
+    return this.count;
+    }
+
+    /**
+    * 预订天数
+    */
+    private Integer getBookingDays(){
+    return this.bookingDays;
+    }
+
+    /**
+    * 入住时间
+    */
+    private Date getCheckInDate(){
+    return this.checkInDate;
+    }
+
+    /**
+    * 退房时间
+    */
+    private Date getCheckOutDate(){
+    return this.checkOutDate;
+    }
+
+    /**
+    * 订单状态（0：待支付 1:已取消 2:支付成功 3:已消费 4：已点评）
+    */
+    private Integer getOrderStatus(){
+    return this.orderStatus;
+    }
+
+    /**
+    * 支付金额
+    */
+    private BigDecimal getPayAmount(){
+    return this.payAmount;
+    }
+
+    /**
+    * 支付方式:1:支付宝 2:微信 3:到店付
+    */
+    private Integer getPayType(){
+    return this.payType;
+    }
+
+    /**
+    * 联系手机号
+    */
+    private String getNoticePhone(){
+    return this.noticePhone;
+    }
+
+    /**
+    * 联系邮箱
+    */
+    private String getNoticeEmail(){
+    return this.noticeEmail;
+    }
+
+    /**
+    * 特殊需求
+    */
+    private String getSpecialRequirement(){
+    return this.specialRequirement;
+    }
+
+    /**
+    * 是否需要发票（0：不需要 1：需要）
+    */
+    private Integer getIsNeedInvoice(){
+    return this.isNeedInvoice;
+    }
+
+    /**
+    * 发票类型（0：个人 1：公司）
+    */
+    private Integer getInvoiceType(){
+    return this.invoiceType;
+    }
+
+    /**
+    * 发票抬头
+    */
+    private String getInvoiceHead(){
+    return this.invoiceHead;
+    }
+
+    /**
+    * 入住人名称
+    */
+    private String getLinkUserName(){
+    return this.linkUserName;
+    }
+
+    /**
+    * 0:WEB端 1:手机端 2:其他客户端
+    */
+    private Integer getBookType(){
+    return this.bookType;
+    }
+
+    /**
+    * 预定时间
+    */
+    private Date getCreationDate(){
+    return this.creationDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getCreatedBy(){
+    return this.createdBy;
+    }
+
+    /**
+    * 支付完成时间
+    */
+    private Date getModifyDate(){
+    return this.modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getModifiedBy(){
+    return this.modifiedBy;
+    }
+
 }

@@ -1,142 +1,209 @@
 package com.cskt.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
+
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
 
 /**
- * 
- * @TableName itrip_user_link_user
- */
-@TableName(value ="itrip_user_link_user")
-@Data
-public class ItripUserLinkUser implements Serializable {
+* 
+* @TableName itrip_user_link_user
+*/
+public class ItripUserLinkUser {
+
     /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
+    * 主键
+    */
+    @ApiModelProperty("主键")
     private Long id;
-
     /**
-     * 常用联系人姓名
-     */
-    @TableField(value = "linkUserName")
+    * 常用联系人姓名
+    */
+    @ApiModelProperty("常用联系人姓名")
+    @Length(max= 255,message="编码长度不能超过255")
     private String linkUserName;
-
     /**
-     * 证件号码
-     */
-    @TableField(value = "linkIdCard")
+    * 证件号码
+    */
+    @ApiModelProperty("证件号码")
+    @Length(max= 255,message="编码长度不能超过255")
     private String linkIdCard;
-
     /**
-     * 常用联系人电话
-     */
-    @TableField(value = "linkPhone")
+    * 常用联系人电话
+    */
+    @ApiModelProperty("常用联系人电话")
+    @Length(max= 255,message="编码长度不能超过255")
     private String linkPhone;
-
     /**
-     * 用户id
-     */
-    @TableField(value = "userId")
+    * 用户id
+    */
+    @ApiModelProperty("用户id")
     private Integer userId;
-
     /**
-     * 
-     */
-    @TableField(value = "creationDate")
+    * 
+    */
+    @ApiModelProperty("")
     private Date creationDate;
-
     /**
-     * 
-     */
-    @TableField(value = "createdBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long createdBy;
-
     /**
-     * 
-     */
-    @TableField(value = "modifyDate")
+    * 
+    */
+    @ApiModelProperty("")
     private Date modifyDate;
-
     /**
-     * 
-     */
-    @TableField(value = "modifiedBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long modifiedBy;
-
     /**
-     * 证件类型：(0-身份证，1-护照，2-学生证，3-军人证，4-驾驶证，5-旅行证)
-     */
-    @TableField(value = "linkIdCardType")
+    * 证件类型：(0-身份证，1-护照，2-学生证，3-军人证，4-驾驶证，5-旅行证)
+    */
+    @ApiModelProperty("证件类型：(0-身份证，1-护照，2-学生证，3-军人证，4-驾驶证，5-旅行证)")
     private Integer linkIdCardType;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ItripUserLinkUser other = (ItripUserLinkUser) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getLinkUserName() == null ? other.getLinkUserName() == null : this.getLinkUserName().equals(other.getLinkUserName()))
-            && (this.getLinkIdCard() == null ? other.getLinkIdCard() == null : this.getLinkIdCard().equals(other.getLinkIdCard()))
-            && (this.getLinkPhone() == null ? other.getLinkPhone() == null : this.getLinkPhone().equals(other.getLinkPhone()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getCreationDate() == null ? other.getCreationDate() == null : this.getCreationDate().equals(other.getCreationDate()))
-            && (this.getCreatedBy() == null ? other.getCreatedBy() == null : this.getCreatedBy().equals(other.getCreatedBy()))
-            && (this.getModifyDate() == null ? other.getModifyDate() == null : this.getModifyDate().equals(other.getModifyDate()))
-            && (this.getModifiedBy() == null ? other.getModifiedBy() == null : this.getModifiedBy().equals(other.getModifiedBy()))
-            && (this.getLinkIdCardType() == null ? other.getLinkIdCardType() == null : this.getLinkIdCardType().equals(other.getLinkIdCardType()));
+    /**
+    * 主键
+    */
+    private void setId(Long id){
+    this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getLinkUserName() == null) ? 0 : getLinkUserName().hashCode());
-        result = prime * result + ((getLinkIdCard() == null) ? 0 : getLinkIdCard().hashCode());
-        result = prime * result + ((getLinkPhone() == null) ? 0 : getLinkPhone().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
-        result = prime * result + ((getCreatedBy() == null) ? 0 : getCreatedBy().hashCode());
-        result = prime * result + ((getModifyDate() == null) ? 0 : getModifyDate().hashCode());
-        result = prime * result + ((getModifiedBy() == null) ? 0 : getModifiedBy().hashCode());
-        result = prime * result + ((getLinkIdCardType() == null) ? 0 : getLinkIdCardType().hashCode());
-        return result;
+    /**
+    * 常用联系人姓名
+    */
+    private void setLinkUserName(String linkUserName){
+    this.linkUserName = linkUserName;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", linkUserName=").append(linkUserName);
-        sb.append(", linkIdCard=").append(linkIdCard);
-        sb.append(", linkPhone=").append(linkPhone);
-        sb.append(", userId=").append(userId);
-        sb.append(", creationDate=").append(creationDate);
-        sb.append(", createdBy=").append(createdBy);
-        sb.append(", modifyDate=").append(modifyDate);
-        sb.append(", modifiedBy=").append(modifiedBy);
-        sb.append(", linkIdCardType=").append(linkIdCardType);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    /**
+    * 证件号码
+    */
+    private void setLinkIdCard(String linkIdCard){
+    this.linkIdCard = linkIdCard;
     }
+
+    /**
+    * 常用联系人电话
+    */
+    private void setLinkPhone(String linkPhone){
+    this.linkPhone = linkPhone;
+    }
+
+    /**
+    * 用户id
+    */
+    private void setUserId(Integer userId){
+    this.userId = userId;
+    }
+
+    /**
+    * 
+    */
+    private void setCreationDate(Date creationDate){
+    this.creationDate = creationDate;
+    }
+
+    /**
+    * 
+    */
+    private void setCreatedBy(Long createdBy){
+    this.createdBy = createdBy;
+    }
+
+    /**
+    * 
+    */
+    private void setModifyDate(Date modifyDate){
+    this.modifyDate = modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private void setModifiedBy(Long modifiedBy){
+    this.modifiedBy = modifiedBy;
+    }
+
+    /**
+    * 证件类型：(0-身份证，1-护照，2-学生证，3-军人证，4-驾驶证，5-旅行证)
+    */
+    private void setLinkIdCardType(Integer linkIdCardType){
+    this.linkIdCardType = linkIdCardType;
+    }
+
+
+    /**
+    * 主键
+    */
+    private Long getId(){
+    return this.id;
+    }
+
+    /**
+    * 常用联系人姓名
+    */
+    private String getLinkUserName(){
+    return this.linkUserName;
+    }
+
+    /**
+    * 证件号码
+    */
+    private String getLinkIdCard(){
+    return this.linkIdCard;
+    }
+
+    /**
+    * 常用联系人电话
+    */
+    private String getLinkPhone(){
+    return this.linkPhone;
+    }
+
+    /**
+    * 用户id
+    */
+    private Integer getUserId(){
+    return this.userId;
+    }
+
+    /**
+    * 
+    */
+    private Date getCreationDate(){
+    return this.creationDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getCreatedBy(){
+    return this.createdBy;
+    }
+
+    /**
+    * 
+    */
+    private Date getModifyDate(){
+    return this.modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getModifiedBy(){
+    return this.modifiedBy;
+    }
+
+    /**
+    * 证件类型：(0-身份证，1-护照，2-学生证，3-军人证，4-驾驶证，5-旅行证)
+    */
+    private Integer getLinkIdCardType(){
+    return this.linkIdCardType;
+    }
+
 }

@@ -1,187 +1,308 @@
 package com.cskt.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
+
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
 
 /**
- * 用户表
- * @TableName itrip_user
- */
-@TableName(value ="itrip_user")
-@Data
-public class ItripUser implements Serializable {
+* 用户表
+* @TableName itrip_user
+*/
+public class ItripUser {
+
     /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
+    * 主键
+    */
+    @ApiModelProperty("主键")
     private Long id;
-
     /**
-     * 若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号
-     */
-    @TableField(value = "userCode")
+    * 若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号
+    */
+    @ApiModelProperty("若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String userCode;
-
     /**
-     * 若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码
-     */
-    @TableField(value = "userPassword")
+    * 若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码
+    */
+    @ApiModelProperty("若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码")
+    @Length(max= 255,message="编码长度不能超过255")
     private String userPassword;
-
     /**
-     * 用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录）
-     */
-    @TableField(value = "userType")
+    * 用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录）
+    */
+    @ApiModelProperty("用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录）")
     private Integer userType;
-
     /**
-     * 平台ID（根据不同登录用户，进行相应存入：自注册用户主键ID、微信ID、QQID、微博ID）
-     */
-    @TableField(value = "flatID")
+    * 平台ID（根据不同登录用户，进行相应存入：自注册用户主键ID、微信ID、QQID、微博ID）
+    */
+    @ApiModelProperty("平台ID（根据不同登录用户，进行相应存入：自注册用户主键ID、微信ID、QQID、微博ID）")
     private Long flatID;
-
     /**
-     * 用户昵称
-     */
-    @TableField(value = "userName")
+    * 用户昵称
+    */
+    @ApiModelProperty("用户昵称")
+    @Length(max= 255,message="编码长度不能超过255")
     private String userName;
-
     /**
-     * 微信号
-     */
-    @TableField(value = "weChat")
+    * 微信号
+    */
+    @ApiModelProperty("微信号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String weChat;
-
     /**
-     * qq账号
-     */
-    @TableField(value = "QQ")
+    * qq账号
+    */
+    @ApiModelProperty("qq账号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String QQ;
-
     /**
-     * 微博账号
-     */
-    @TableField(value = "weibo")
+    * 微博账号
+    */
+    @ApiModelProperty("微博账号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String weibo;
-
     /**
-     * 百度账号
-     */
-    @TableField(value = "baidu")
+    * 百度账号
+    */
+    @ApiModelProperty("百度账号")
+    @Length(max= 255,message="编码长度不能超过255")
     private String baidu;
-
     /**
-     * 
-     */
-    @TableField(value = "creationDate")
+    * 
+    */
+    @ApiModelProperty("")
     private Date creationDate;
-
     /**
-     * 
-     */
-    @TableField(value = "createdBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long createdBy;
-
     /**
-     * 
-     */
-    @TableField(value = "modifyDate")
+    * 
+    */
+    @ApiModelProperty("")
     private Date modifyDate;
-
     /**
-     * 
-     */
-    @TableField(value = "modifiedBy")
+    * 
+    */
+    @ApiModelProperty("")
     private Long modifiedBy;
-
     /**
-     * 是否激活,(0 false，1 true,默认是0)
-     */
-    @TableField(value = "activated")
+    * 是否激活,(0 false，1 true,默认是0)
+    */
+    @ApiModelProperty("是否激活,(0 false，1 true,默认是0)")
     private Integer activated;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ItripUser other = (ItripUser) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUserCode() == null ? other.getUserCode() == null : this.getUserCode().equals(other.getUserCode()))
-            && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
-            && (this.getUserType() == null ? other.getUserType() == null : this.getUserType().equals(other.getUserType()))
-            && (this.getFlatID() == null ? other.getFlatID() == null : this.getFlatID().equals(other.getFlatID()))
-            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
-            && (this.getWeChat() == null ? other.getWeChat() == null : this.getWeChat().equals(other.getWeChat()))
-            && (this.getQQ() == null ? other.getQQ() == null : this.getQQ().equals(other.getQQ()))
-            && (this.getWeibo() == null ? other.getWeibo() == null : this.getWeibo().equals(other.getWeibo()))
-            && (this.getBaidu() == null ? other.getBaidu() == null : this.getBaidu().equals(other.getBaidu()))
-            && (this.getCreationDate() == null ? other.getCreationDate() == null : this.getCreationDate().equals(other.getCreationDate()))
-            && (this.getCreatedBy() == null ? other.getCreatedBy() == null : this.getCreatedBy().equals(other.getCreatedBy()))
-            && (this.getModifyDate() == null ? other.getModifyDate() == null : this.getModifyDate().equals(other.getModifyDate()))
-            && (this.getModifiedBy() == null ? other.getModifiedBy() == null : this.getModifiedBy().equals(other.getModifiedBy()))
-            && (this.getActivated() == null ? other.getActivated() == null : this.getActivated().equals(other.getActivated()));
+    /**
+    * 主键
+    */
+    private void setId(Long id){
+    this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUserCode() == null) ? 0 : getUserCode().hashCode());
-        result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
-        result = prime * result + ((getUserType() == null) ? 0 : getUserType().hashCode());
-        result = prime * result + ((getFlatID() == null) ? 0 : getFlatID().hashCode());
-        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
-        result = prime * result + ((getWeChat() == null) ? 0 : getWeChat().hashCode());
-        result = prime * result + ((getQQ() == null) ? 0 : getQQ().hashCode());
-        result = prime * result + ((getWeibo() == null) ? 0 : getWeibo().hashCode());
-        result = prime * result + ((getBaidu() == null) ? 0 : getBaidu().hashCode());
-        result = prime * result + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
-        result = prime * result + ((getCreatedBy() == null) ? 0 : getCreatedBy().hashCode());
-        result = prime * result + ((getModifyDate() == null) ? 0 : getModifyDate().hashCode());
-        result = prime * result + ((getModifiedBy() == null) ? 0 : getModifiedBy().hashCode());
-        result = prime * result + ((getActivated() == null) ? 0 : getActivated().hashCode());
-        return result;
+    /**
+    * 若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号
+    */
+    private void setUserCode(String userCode){
+    this.userCode = userCode;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userCode=").append(userCode);
-        sb.append(", userPassword=").append(userPassword);
-        sb.append(", userType=").append(userType);
-        sb.append(", flatID=").append(flatID);
-        sb.append(", userName=").append(userName);
-        sb.append(", weChat=").append(weChat);
-        sb.append(", QQ=").append(QQ);
-        sb.append(", weibo=").append(weibo);
-        sb.append(", baidu=").append(baidu);
-        sb.append(", creationDate=").append(creationDate);
-        sb.append(", createdBy=").append(createdBy);
-        sb.append(", modifyDate=").append(modifyDate);
-        sb.append(", modifiedBy=").append(modifiedBy);
-        sb.append(", activated=").append(activated);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    /**
+    * 若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码
+    */
+    private void setUserPassword(String userPassword){
+    this.userPassword = userPassword;
     }
+
+    /**
+    * 用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录）
+    */
+    private void setUserType(Integer userType){
+    this.userType = userType;
+    }
+
+    /**
+    * 平台ID（根据不同登录用户，进行相应存入：自注册用户主键ID、微信ID、QQID、微博ID）
+    */
+    private void setFlatID(Long flatID){
+    this.flatID = flatID;
+    }
+
+    /**
+    * 用户昵称
+    */
+    private void setUserName(String userName){
+    this.userName = userName;
+    }
+
+    /**
+    * 微信号
+    */
+    private void setWeChat(String weChat){
+    this.weChat = weChat;
+    }
+
+    /**
+    * qq账号
+    */
+    private void setQQ(String QQ){
+    this.QQ = QQ;
+    }
+
+    /**
+    * 微博账号
+    */
+    private void setWeibo(String weibo){
+    this.weibo = weibo;
+    }
+
+    /**
+    * 百度账号
+    */
+    private void setBaidu(String baidu){
+    this.baidu = baidu;
+    }
+
+    /**
+    * 
+    */
+    private void setCreationDate(Date creationDate){
+    this.creationDate = creationDate;
+    }
+
+    /**
+    * 
+    */
+    private void setCreatedBy(Long createdBy){
+    this.createdBy = createdBy;
+    }
+
+    /**
+    * 
+    */
+    private void setModifyDate(Date modifyDate){
+    this.modifyDate = modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private void setModifiedBy(Long modifiedBy){
+    this.modifiedBy = modifiedBy;
+    }
+
+    /**
+    * 是否激活,(0 false，1 true,默认是0)
+    */
+    private void setActivated(Integer activated){
+    this.activated = activated;
+    }
+
+
+    /**
+    * 主键
+    */
+    private Long getId(){
+    return this.id;
+    }
+
+    /**
+    * 若是第三方登录，系统将自动生成唯一账号；自注册用户则为邮箱或者手机号
+    */
+    private String getUserCode(){
+    return this.userCode;
+    }
+
+    /**
+    * 若是第三方登录，系统将自动生成唯一密码；自注册用户则为自定义密码
+    */
+    private String getUserPassword(){
+    return this.userPassword;
+    }
+
+    /**
+    * 用户类型（标识：0 自注册用户 1 微信登录 2 QQ登录 3 微博登录）
+    */
+    private Integer getUserType(){
+    return this.userType;
+    }
+
+    /**
+    * 平台ID（根据不同登录用户，进行相应存入：自注册用户主键ID、微信ID、QQID、微博ID）
+    */
+    private Long getFlatID(){
+    return this.flatID;
+    }
+
+    /**
+    * 用户昵称
+    */
+    private String getUserName(){
+    return this.userName;
+    }
+
+    /**
+    * 微信号
+    */
+    private String getWeChat(){
+    return this.weChat;
+    }
+
+    /**
+    * qq账号
+    */
+    private String getQQ(){
+    return this.QQ;
+    }
+
+    /**
+    * 微博账号
+    */
+    private String getWeibo(){
+    return this.weibo;
+    }
+
+    /**
+    * 百度账号
+    */
+    private String getBaidu(){
+    return this.baidu;
+    }
+
+    /**
+    * 
+    */
+    private Date getCreationDate(){
+    return this.creationDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getCreatedBy(){
+    return this.createdBy;
+    }
+
+    /**
+    * 
+    */
+    private Date getModifyDate(){
+    return this.modifyDate;
+    }
+
+    /**
+    * 
+    */
+    private Long getModifiedBy(){
+    return this.modifiedBy;
+    }
+
+    /**
+    * 是否激活,(0 false，1 true,默认是0)
+    */
+    private Integer getActivated(){
+    return this.activated;
+    }
+
 }
