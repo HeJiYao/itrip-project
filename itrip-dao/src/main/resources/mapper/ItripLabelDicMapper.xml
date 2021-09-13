@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskt.mapper.ItripLabelDicMapper">
+
+    <resultMap id="BaseResultMap" type="com.cskt.pojo.ItripLabelDic">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="value" column="value" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="parentId" column="parentId" jdbcType="BIGINT"/>
+            <result property="pic" column="pic" jdbcType="VARCHAR"/>
+            <result property="creationDate" column="creationDate" jdbcType="TIMESTAMP"/>
+            <result property="createdBy" column="createdBy" jdbcType="BIGINT"/>
+            <result property="modifyDate" column="modifyDate" jdbcType="TIMESTAMP"/>
+            <result property="modifiedBy" column="modifiedBy" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,value,
+        description,parentId,pic,
+        creationDate,createdBy,modifyDate,
+        modifiedBy
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from itrip_label_dic
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from itrip_label_dic
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripLabelDic" useGeneratedKeys="true">
+        insert into itrip_label_dic
+        ( id,name,value
+        ,description,parentId,pic
+        ,creationDate,createdBy,modifyDate
+        ,modifiedBy)
+        values (#{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{value,jdbcType=VARCHAR}
+        ,#{description,jdbcType=VARCHAR},#{parentId,jdbcType=BIGINT},#{pic,jdbcType=VARCHAR}
+        ,#{creationDate,jdbcType=TIMESTAMP},#{createdBy,jdbcType=BIGINT},#{modifyDate,jdbcType=TIMESTAMP}
+        ,#{modifiedBy,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripLabelDic" useGeneratedKeys="true">
+        insert into itrip_label_dic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="name != null">name,</if>
+                <if test="value != null">value,</if>
+                <if test="description != null">description,</if>
+                <if test="parentId != null">parentId,</if>
+                <if test="pic != null">pic,</if>
+                <if test="creationDate != null">creationDate,</if>
+                <if test="createdBy != null">createdBy,</if>
+                <if test="modifyDate != null">modifyDate,</if>
+                <if test="modifiedBy != null">modifiedBy,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">id = #{id,jdbcType=BIGINT},</if>
+                <if test="name != null">name = #{name,jdbcType=VARCHAR},</if>
+                <if test="value != null">value = #{value,jdbcType=VARCHAR},</if>
+                <if test="description != null">description = #{description,jdbcType=VARCHAR},</if>
+                <if test="parentId != null">parentId = #{parentId,jdbcType=BIGINT},</if>
+                <if test="pic != null">pic = #{pic,jdbcType=VARCHAR},</if>
+                <if test="creationDate != null">creationDate = #{creationDate,jdbcType=TIMESTAMP},</if>
+                <if test="createdBy != null">createdBy = #{createdBy,jdbcType=BIGINT},</if>
+                <if test="modifyDate != null">modifyDate = #{modifyDate,jdbcType=TIMESTAMP},</if>
+                <if test="modifiedBy != null">modifiedBy = #{modifiedBy,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cskt.pojo.ItripLabelDic">
+        update itrip_label_dic
+        <set>
+                <if test="name != null">
+                    name = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="value != null">
+                    value = #{value,jdbcType=VARCHAR},
+                </if>
+                <if test="description != null">
+                    description = #{description,jdbcType=VARCHAR},
+                </if>
+                <if test="parentId != null">
+                    parentId = #{parentId,jdbcType=BIGINT},
+                </if>
+                <if test="pic != null">
+                    pic = #{pic,jdbcType=VARCHAR},
+                </if>
+                <if test="creationDate != null">
+                    creationDate = #{creationDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createdBy != null">
+                    createdBy = #{createdBy,jdbcType=BIGINT},
+                </if>
+                <if test="modifyDate != null">
+                    modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="modifiedBy != null">
+                    modifiedBy = #{modifiedBy,jdbcType=BIGINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cskt.pojo.ItripLabelDic">
+        update itrip_label_dic
+        set 
+            name =  #{name,jdbcType=VARCHAR},
+            value =  #{value,jdbcType=VARCHAR},
+            description =  #{description,jdbcType=VARCHAR},
+            parentId =  #{parentId,jdbcType=BIGINT},
+            pic =  #{pic,jdbcType=VARCHAR},
+            creationDate =  #{creationDate,jdbcType=TIMESTAMP},
+            createdBy =  #{createdBy,jdbcType=BIGINT},
+            modifyDate =  #{modifyDate,jdbcType=TIMESTAMP},
+            modifiedBy =  #{modifiedBy,jdbcType=BIGINT}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

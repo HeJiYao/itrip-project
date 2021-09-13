@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskt.mapper.ItripHotelMapper">
+
+    <resultMap id="BaseResultMap" type="com.cskt.pojo.ItripHotel">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="hotelName" column="hotelName" jdbcType="VARCHAR"/>
+            <result property="countryId" column="countryId" jdbcType="BIGINT"/>
+            <result property="provinceId" column="provinceId" jdbcType="BIGINT"/>
+            <result property="cityId" column="cityId" jdbcType="BIGINT"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="details" column="details" jdbcType="VARCHAR"/>
+            <result property="facilities" column="facilities" jdbcType="VARCHAR"/>
+            <result property="hotelPolicy" column="hotelPolicy" jdbcType="VARCHAR"/>
+            <result property="hotelType" column="hotelType" jdbcType="INTEGER"/>
+            <result property="hotelLevel" column="hotelLevel" jdbcType="INTEGER"/>
+            <result property="isGroupPurchase" column="isGroupPurchase" jdbcType="INTEGER"/>
+            <result property="redundantCityName" column="redundantCityName" jdbcType="VARCHAR"/>
+            <result property="redundantProvinceName" column="redundantProvinceName" jdbcType="VARCHAR"/>
+            <result property="redundantCountryName" column="redundantCountryName" jdbcType="VARCHAR"/>
+            <result property="redundantHotelStore" column="redundantHotelStore" jdbcType="INTEGER"/>
+            <result property="creationDate" column="creationDate" jdbcType="TIMESTAMP"/>
+            <result property="createdBy" column="createdBy" jdbcType="BIGINT"/>
+            <result property="modifyDate" column="modifyDate" jdbcType="TIMESTAMP"/>
+            <result property="modifiedBy" column="modifiedBy" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,hotelName,countryId,
+        provinceId,cityId,address,
+        details,facilities,hotelPolicy,
+        hotelType,hotelLevel,isGroupPurchase,
+        redundantCityName,redundantProvinceName,redundantCountryName,
+        redundantHotelStore,creationDate,createdBy,
+        modifyDate,modifiedBy
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from itrip_hotel
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from itrip_hotel
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripHotel" useGeneratedKeys="true">
+        insert into itrip_hotel
+        ( id,hotelName,countryId
+        ,provinceId,cityId,address
+        ,details,facilities,hotelPolicy
+        ,hotelType,hotelLevel,isGroupPurchase
+        ,redundantCityName,redundantProvinceName,redundantCountryName
+        ,redundantHotelStore,creationDate,createdBy
+        ,modifyDate,modifiedBy)
+        values (#{id,jdbcType=BIGINT},#{hotelName,jdbcType=VARCHAR},#{countryId,jdbcType=BIGINT}
+        ,#{provinceId,jdbcType=BIGINT},#{cityId,jdbcType=BIGINT},#{address,jdbcType=VARCHAR}
+        ,#{details,jdbcType=VARCHAR},#{facilities,jdbcType=VARCHAR},#{hotelPolicy,jdbcType=VARCHAR}
+        ,#{hotelType,jdbcType=INTEGER},#{hotelLevel,jdbcType=INTEGER},#{isGroupPurchase,jdbcType=INTEGER}
+        ,#{redundantCityName,jdbcType=VARCHAR},#{redundantProvinceName,jdbcType=VARCHAR},#{redundantCountryName,jdbcType=VARCHAR}
+        ,#{redundantHotelStore,jdbcType=INTEGER},#{creationDate,jdbcType=TIMESTAMP},#{createdBy,jdbcType=BIGINT}
+        ,#{modifyDate,jdbcType=TIMESTAMP},#{modifiedBy,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cskt.pojo.ItripHotel" useGeneratedKeys="true">
+        insert into itrip_hotel
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="hotelName != null">hotelName,</if>
+                <if test="countryId != null">countryId,</if>
+                <if test="provinceId != null">provinceId,</if>
+                <if test="cityId != null">cityId,</if>
+                <if test="address != null">address,</if>
+                <if test="details != null">details,</if>
+                <if test="facilities != null">facilities,</if>
+                <if test="hotelPolicy != null">hotelPolicy,</if>
+                <if test="hotelType != null">hotelType,</if>
+                <if test="hotelLevel != null">hotelLevel,</if>
+                <if test="isGroupPurchase != null">isGroupPurchase,</if>
+                <if test="redundantCityName != null">redundantCityName,</if>
+                <if test="redundantProvinceName != null">redundantProvinceName,</if>
+                <if test="redundantCountryName != null">redundantCountryName,</if>
+                <if test="redundantHotelStore != null">redundantHotelStore,</if>
+                <if test="creationDate != null">creationDate,</if>
+                <if test="createdBy != null">createdBy,</if>
+                <if test="modifyDate != null">modifyDate,</if>
+                <if test="modifiedBy != null">modifiedBy,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">id = #{id,jdbcType=BIGINT},</if>
+                <if test="hotelName != null">hotelName = #{hotelName,jdbcType=VARCHAR},</if>
+                <if test="countryId != null">countryId = #{countryId,jdbcType=BIGINT},</if>
+                <if test="provinceId != null">provinceId = #{provinceId,jdbcType=BIGINT},</if>
+                <if test="cityId != null">cityId = #{cityId,jdbcType=BIGINT},</if>
+                <if test="address != null">address = #{address,jdbcType=VARCHAR},</if>
+                <if test="details != null">details = #{details,jdbcType=VARCHAR},</if>
+                <if test="facilities != null">facilities = #{facilities,jdbcType=VARCHAR},</if>
+                <if test="hotelPolicy != null">hotelPolicy = #{hotelPolicy,jdbcType=VARCHAR},</if>
+                <if test="hotelType != null">hotelType = #{hotelType,jdbcType=INTEGER},</if>
+                <if test="hotelLevel != null">hotelLevel = #{hotelLevel,jdbcType=INTEGER},</if>
+                <if test="isGroupPurchase != null">isGroupPurchase = #{isGroupPurchase,jdbcType=INTEGER},</if>
+                <if test="redundantCityName != null">redundantCityName = #{redundantCityName,jdbcType=VARCHAR},</if>
+                <if test="redundantProvinceName != null">redundantProvinceName = #{redundantProvinceName,jdbcType=VARCHAR},</if>
+                <if test="redundantCountryName != null">redundantCountryName = #{redundantCountryName,jdbcType=VARCHAR},</if>
+                <if test="redundantHotelStore != null">redundantHotelStore = #{redundantHotelStore,jdbcType=INTEGER},</if>
+                <if test="creationDate != null">creationDate = #{creationDate,jdbcType=TIMESTAMP},</if>
+                <if test="createdBy != null">createdBy = #{createdBy,jdbcType=BIGINT},</if>
+                <if test="modifyDate != null">modifyDate = #{modifyDate,jdbcType=TIMESTAMP},</if>
+                <if test="modifiedBy != null">modifiedBy = #{modifiedBy,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cskt.pojo.ItripHotel">
+        update itrip_hotel
+        <set>
+                <if test="hotelName != null">
+                    hotelName = #{hotelName,jdbcType=VARCHAR},
+                </if>
+                <if test="countryId != null">
+                    countryId = #{countryId,jdbcType=BIGINT},
+                </if>
+                <if test="provinceId != null">
+                    provinceId = #{provinceId,jdbcType=BIGINT},
+                </if>
+                <if test="cityId != null">
+                    cityId = #{cityId,jdbcType=BIGINT},
+                </if>
+                <if test="address != null">
+                    address = #{address,jdbcType=VARCHAR},
+                </if>
+                <if test="details != null">
+                    details = #{details,jdbcType=VARCHAR},
+                </if>
+                <if test="facilities != null">
+                    facilities = #{facilities,jdbcType=VARCHAR},
+                </if>
+                <if test="hotelPolicy != null">
+                    hotelPolicy = #{hotelPolicy,jdbcType=VARCHAR},
+                </if>
+                <if test="hotelType != null">
+                    hotelType = #{hotelType,jdbcType=INTEGER},
+                </if>
+                <if test="hotelLevel != null">
+                    hotelLevel = #{hotelLevel,jdbcType=INTEGER},
+                </if>
+                <if test="isGroupPurchase != null">
+                    isGroupPurchase = #{isGroupPurchase,jdbcType=INTEGER},
+                </if>
+                <if test="redundantCityName != null">
+                    redundantCityName = #{redundantCityName,jdbcType=VARCHAR},
+                </if>
+                <if test="redundantProvinceName != null">
+                    redundantProvinceName = #{redundantProvinceName,jdbcType=VARCHAR},
+                </if>
+                <if test="redundantCountryName != null">
+                    redundantCountryName = #{redundantCountryName,jdbcType=VARCHAR},
+                </if>
+                <if test="redundantHotelStore != null">
+                    redundantHotelStore = #{redundantHotelStore,jdbcType=INTEGER},
+                </if>
+                <if test="creationDate != null">
+                    creationDate = #{creationDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createdBy != null">
+                    createdBy = #{createdBy,jdbcType=BIGINT},
+                </if>
+                <if test="modifyDate != null">
+                    modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="modifiedBy != null">
+                    modifiedBy = #{modifiedBy,jdbcType=BIGINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cskt.pojo.ItripHotel">
+        update itrip_hotel
+        set 
+            hotelName =  #{hotelName,jdbcType=VARCHAR},
+            countryId =  #{countryId,jdbcType=BIGINT},
+            provinceId =  #{provinceId,jdbcType=BIGINT},
+            cityId =  #{cityId,jdbcType=BIGINT},
+            address =  #{address,jdbcType=VARCHAR},
+            details =  #{details,jdbcType=VARCHAR},
+            facilities =  #{facilities,jdbcType=VARCHAR},
+            hotelPolicy =  #{hotelPolicy,jdbcType=VARCHAR},
+            hotelType =  #{hotelType,jdbcType=INTEGER},
+            hotelLevel =  #{hotelLevel,jdbcType=INTEGER},
+            isGroupPurchase =  #{isGroupPurchase,jdbcType=INTEGER},
+            redundantCityName =  #{redundantCityName,jdbcType=VARCHAR},
+            redundantProvinceName =  #{redundantProvinceName,jdbcType=VARCHAR},
+            redundantCountryName =  #{redundantCountryName,jdbcType=VARCHAR},
+            redundantHotelStore =  #{redundantHotelStore,jdbcType=INTEGER},
+            creationDate =  #{creationDate,jdbcType=TIMESTAMP},
+            createdBy =  #{createdBy,jdbcType=BIGINT},
+            modifyDate =  #{modifyDate,jdbcType=TIMESTAMP},
+            modifiedBy =  #{modifiedBy,jdbcType=BIGINT}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

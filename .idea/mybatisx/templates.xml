@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TemplatesSettings">
+    <option name="templateConfigs">
+      <TemplateContext>
+        <option name="generateConfig">
+          <GenerateConfig>
+            <option name="annotationType" value="MYBATIS_PLUS3" />
+            <option name="basePackage" value="com.cskt" />
+            <option name="basePath" value="src/main/java" />
+            <option name="encoding" value="UTF-8" />
+            <option name="extraClassSuffix" value="" />
+            <option name="ignoreFieldPrefix" value="" />
+            <option name="ignoreFieldSuffix" value="" />
+            <option name="ignoreTablePrefix" value="" />
+            <option name="ignoreTableSuffix" value="" />
+            <option name="moduleName" value="itrip-dao" />
+            <option name="modulePath" value="$PROJECT_DIR$/itrip-dao" />
+            <option name="moduleUIInfoList">
+              <list>
+                <ModuleUIInfo>
+                  <option name="basePath" value="${domain.basePath}" />
+                  <option name="configName" value="domain" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}.java" />
+                  <option name="modulePath" value="$PROJECT_DIR$/itrip-dao" />
+                  <option name="packageName" value="${domain.basePackage}.domain" />
+                </ModuleUIInfo>
+                <ModuleUIInfo>
+                  <option name="basePath" value="${domain.basePath}" />
+                  <option name="configName" value="mapperInterface" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}Mapper" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.java" />
+                  <option name="modulePath" value="$PROJECT_DIR$/itrip-dao" />
+                  <option name="packageName" value="${domain.basePackage}.mapper" />
+                </ModuleUIInfo>
+                <ModuleUIInfo>
+                  <option name="basePath" value="src/main/resources" />
+                  <option name="configName" value="mapperXml" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}Mapper" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.xml" />
+                  <option name="modulePath" value="$PROJECT_DIR$/itrip-dao" />
+                  <option name="packageName" value="mapper" />
+                </ModuleUIInfo>
+              </list>
+            </option>
+            <option name="needToStringHashcodeEquals" value="true" />
+            <option name="needsComment" value="true" />
+            <option name="relativePackage" value="pojo" />
+            <option name="superClass" value="" />
+            <option name="tableUIInfoList">
+              <list>
+                <TableUIInfo>
+                  <option name="className" value="ItripUserLinkUser" />
+                  <option name="tableName" value="itrip_user_link_user" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripTradeEnds" />
+                  <option name="tableName" value="itrip_trade_ends" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotel" />
+                  <option name="tableName" value="itrip_hotel" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelRoom" />
+                  <option name="tableName" value="itrip_hotel_room" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelTradingArea" />
+                  <option name="tableName" value="itrip_hotel_trading_area" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripComment" />
+                  <option name="tableName" value="itrip_comment" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelExtendProperty" />
+                  <option name="tableName" value="itrip_hotel_extend_property" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripOrderLinkUser" />
+                  <option name="tableName" value="itrip_order_link_user" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripUser" />
+                  <option name="tableName" value="itrip_user" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelTempStore" />
+                  <option name="tableName" value="itrip_hotel_temp_store" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripImage" />
+                  <option name="tableName" value="itrip_image" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripProductStore" />
+                  <option name="tableName" value="itrip_product_store" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelOrder" />
+                  <option name="tableName" value="itrip_hotel_order" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripHotelFeature" />
+                  <option name="tableName" value="itrip_hotel_feature" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripAreaDic" />
+                  <option name="tableName" value="itrip_area_dic" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ItripLabelDic" />
+                  <option name="tableName" value="itrip_label_dic" />
+                </TableUIInfo>
+              </list>
+            </option>
+            <option name="templatesName" value="custom-model-swagger" />
+            <option name="useActualColumnAnnotationInject" value="true" />
+            <option name="useActualColumns" value="true" />
+            <option name="useLombokPlugin" value="true" />
+          </GenerateConfig>
+        </option>
+        <option name="moduleName" value="itrip-dao" />
+        <option name="projectPath" value="$PROJECT_DIR$" />
+        <option name="templateName" value="custom-model-swagger" />
+      </TemplateContext>
+    </option>
+  </component>
+</project>
