@@ -1,378 +1,223 @@
 package com.cskt.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import java.util.Date;
-
-import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Length;
+import lombok.Data;
 
 /**
-* 评论表
-* @TableName itrip_comment
-*/
-public class ItripComment {
+ * 评论表
+ * @TableName itrip_comment
+ */
+@TableName(value ="itrip_comment")
+@Data
+public class ItripComment implements Serializable {
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
-    * 主键
-    */
-    @ApiModelProperty("主键")
-    private Long id;
-    /**
-    * 如果产品是酒店的话 改字段保存酒店id
-    */
-    @ApiModelProperty("如果产品是酒店的话 改字段保存酒店id")
+     * 如果产品是酒店的话 改字段保存酒店id
+     */
+    @TableField(value = "hotelId")
     private Long hotelId;
+
     /**
-    * 商品id
-    */
-    @ApiModelProperty("商品id")
+     * 商品id
+     */
+    @TableField(value = "productId")
     private Long productId;
+
     /**
-    * 订单id
-    */
-    @ApiModelProperty("订单id")
+     * 订单id
+     */
+    @TableField(value = "orderId")
     private Long orderId;
+
     /**
-    * 商品类型(0:旅游产品 1:酒店产品 2:机票产品)
-    */
-    @ApiModelProperty("商品类型(0:旅游产品 1:酒店产品 2:机票产品)")
+     * 商品类型(0:旅游产品 1:酒店产品 2:机票产品)
+     */
+    @TableField(value = "productType")
     private Integer productType;
+
     /**
-    * 评论内容
-    */
-    @ApiModelProperty("评论内容")
-    @Length(max= -1,message="编码长度不能超过-1")
+     * 评论内容
+     */
+    @TableField(value = "content")
     private String content;
+
     /**
-    * 用户编号
-    */
-    @ApiModelProperty("用户编号")
+     * 用户编号
+     */
+    @TableField(value = "userId")
     private Long userId;
+
     /**
-    * 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片
-    */
-    @ApiModelProperty("是否包含图片(当用户上传评论时检测)0:无图片 1:有图片")
+     * 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片
+     */
+    @TableField(value = "isHavingImg")
     private Integer isHavingImg;
+
     /**
-    * 位置评分
-    */
-    @ApiModelProperty("位置评分")
+     * 位置评分
+     */
+    @TableField(value = "positionScore")
     private Integer positionScore;
+
     /**
-    * 设施评分
-    */
-    @ApiModelProperty("设施评分")
+     * 设施评分
+     */
+    @TableField(value = "facilitiesScore")
     private Integer facilitiesScore;
+
     /**
-    * 服务评分
-    */
-    @ApiModelProperty("服务评分")
+     * 服务评分
+     */
+    @TableField(value = "serviceScore")
     private Integer serviceScore;
+
     /**
-    * 卫生评分
-    */
-    @ApiModelProperty("卫生评分")
+     * 卫生评分
+     */
+    @TableField(value = "hygieneScore")
     private Integer hygieneScore;
+
     /**
-    * 综合评分
-    */
-    @ApiModelProperty("综合评分")
+     * 综合评分
+     */
+    @TableField(value = "score")
     private Integer score;
+
     /**
-    * 出游类型
-    */
-    @ApiModelProperty("出游类型")
+     * 出游类型
+     */
+    @TableField(value = "tripMode")
     private Long tripMode;
+
     /**
-    * 是否满意（0：有待改善 1：值得推荐）
-    */
-    @ApiModelProperty("是否满意（0：有待改善 1：值得推荐）")
+     * 是否满意（0：有待改善 1：值得推荐）
+     */
+    @TableField(value = "isOk")
     private Integer isOk;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "creationDate")
     private Date creationDate;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "createdBy")
     private Long createdBy;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "modifyDate")
     private Date modifyDate;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "modifiedBy")
     private Long modifiedBy;
 
-    /**
-    * 主键
-    */
-    private void setId(Long id){
-    this.id = id;
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        ItripComment other = (ItripComment) that;
+        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getHotelId() == null ? other.getHotelId() == null : this.getHotelId().equals(other.getHotelId()))
+            && (this.getProductId() == null ? other.getProductId() == null : this.getProductId().equals(other.getProductId()))
+            && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
+            && (this.getProductType() == null ? other.getProductType() == null : this.getProductType().equals(other.getProductType()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getIsHavingImg() == null ? other.getIsHavingImg() == null : this.getIsHavingImg().equals(other.getIsHavingImg()))
+            && (this.getPositionScore() == null ? other.getPositionScore() == null : this.getPositionScore().equals(other.getPositionScore()))
+            && (this.getFacilitiesScore() == null ? other.getFacilitiesScore() == null : this.getFacilitiesScore().equals(other.getFacilitiesScore()))
+            && (this.getServiceScore() == null ? other.getServiceScore() == null : this.getServiceScore().equals(other.getServiceScore()))
+            && (this.getHygieneScore() == null ? other.getHygieneScore() == null : this.getHygieneScore().equals(other.getHygieneScore()))
+            && (this.getScore() == null ? other.getScore() == null : this.getScore().equals(other.getScore()))
+            && (this.getTripMode() == null ? other.getTripMode() == null : this.getTripMode().equals(other.getTripMode()))
+            && (this.getIsOk() == null ? other.getIsOk() == null : this.getIsOk().equals(other.getIsOk()))
+            && (this.getCreationDate() == null ? other.getCreationDate() == null : this.getCreationDate().equals(other.getCreationDate()))
+            && (this.getCreatedBy() == null ? other.getCreatedBy() == null : this.getCreatedBy().equals(other.getCreatedBy()))
+            && (this.getModifyDate() == null ? other.getModifyDate() == null : this.getModifyDate().equals(other.getModifyDate()))
+            && (this.getModifiedBy() == null ? other.getModifiedBy() == null : this.getModifiedBy().equals(other.getModifiedBy()));
     }
 
-    /**
-    * 如果产品是酒店的话 改字段保存酒店id
-    */
-    private void setHotelId(Long hotelId){
-    this.hotelId = hotelId;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getHotelId() == null) ? 0 : getHotelId().hashCode());
+        result = prime * result + ((getProductId() == null) ? 0 : getProductId().hashCode());
+        result = prime * result + ((getOrderId() == null) ? 0 : getOrderId().hashCode());
+        result = prime * result + ((getProductType() == null) ? 0 : getProductType().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getIsHavingImg() == null) ? 0 : getIsHavingImg().hashCode());
+        result = prime * result + ((getPositionScore() == null) ? 0 : getPositionScore().hashCode());
+        result = prime * result + ((getFacilitiesScore() == null) ? 0 : getFacilitiesScore().hashCode());
+        result = prime * result + ((getServiceScore() == null) ? 0 : getServiceScore().hashCode());
+        result = prime * result + ((getHygieneScore() == null) ? 0 : getHygieneScore().hashCode());
+        result = prime * result + ((getScore() == null) ? 0 : getScore().hashCode());
+        result = prime * result + ((getTripMode() == null) ? 0 : getTripMode().hashCode());
+        result = prime * result + ((getIsOk() == null) ? 0 : getIsOk().hashCode());
+        result = prime * result + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
+        result = prime * result + ((getCreatedBy() == null) ? 0 : getCreatedBy().hashCode());
+        result = prime * result + ((getModifyDate() == null) ? 0 : getModifyDate().hashCode());
+        result = prime * result + ((getModifiedBy() == null) ? 0 : getModifiedBy().hashCode());
+        return result;
     }
 
-    /**
-    * 商品id
-    */
-    private void setProductId(Long productId){
-    this.productId = productId;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", hotelId=").append(hotelId);
+        sb.append(", productId=").append(productId);
+        sb.append(", orderId=").append(orderId);
+        sb.append(", productType=").append(productType);
+        sb.append(", content=").append(content);
+        sb.append(", userId=").append(userId);
+        sb.append(", isHavingImg=").append(isHavingImg);
+        sb.append(", positionScore=").append(positionScore);
+        sb.append(", facilitiesScore=").append(facilitiesScore);
+        sb.append(", serviceScore=").append(serviceScore);
+        sb.append(", hygieneScore=").append(hygieneScore);
+        sb.append(", score=").append(score);
+        sb.append(", tripMode=").append(tripMode);
+        sb.append(", isOk=").append(isOk);
+        sb.append(", creationDate=").append(creationDate);
+        sb.append(", createdBy=").append(createdBy);
+        sb.append(", modifyDate=").append(modifyDate);
+        sb.append(", modifiedBy=").append(modifiedBy);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
-
-    /**
-    * 订单id
-    */
-    private void setOrderId(Long orderId){
-    this.orderId = orderId;
-    }
-
-    /**
-    * 商品类型(0:旅游产品 1:酒店产品 2:机票产品)
-    */
-    private void setProductType(Integer productType){
-    this.productType = productType;
-    }
-
-    /**
-    * 评论内容
-    */
-    private void setContent(String content){
-    this.content = content;
-    }
-
-    /**
-    * 用户编号
-    */
-    private void setUserId(Long userId){
-    this.userId = userId;
-    }
-
-    /**
-    * 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片
-    */
-    private void setIsHavingImg(Integer isHavingImg){
-    this.isHavingImg = isHavingImg;
-    }
-
-    /**
-    * 位置评分
-    */
-    private void setPositionScore(Integer positionScore){
-    this.positionScore = positionScore;
-    }
-
-    /**
-    * 设施评分
-    */
-    private void setFacilitiesScore(Integer facilitiesScore){
-    this.facilitiesScore = facilitiesScore;
-    }
-
-    /**
-    * 服务评分
-    */
-    private void setServiceScore(Integer serviceScore){
-    this.serviceScore = serviceScore;
-    }
-
-    /**
-    * 卫生评分
-    */
-    private void setHygieneScore(Integer hygieneScore){
-    this.hygieneScore = hygieneScore;
-    }
-
-    /**
-    * 综合评分
-    */
-    private void setScore(Integer score){
-    this.score = score;
-    }
-
-    /**
-    * 出游类型
-    */
-    private void setTripMode(Long tripMode){
-    this.tripMode = tripMode;
-    }
-
-    /**
-    * 是否满意（0：有待改善 1：值得推荐）
-    */
-    private void setIsOk(Integer isOk){
-    this.isOk = isOk;
-    }
-
-    /**
-    * 
-    */
-    private void setCreationDate(Date creationDate){
-    this.creationDate = creationDate;
-    }
-
-    /**
-    * 
-    */
-    private void setCreatedBy(Long createdBy){
-    this.createdBy = createdBy;
-    }
-
-    /**
-    * 
-    */
-    private void setModifyDate(Date modifyDate){
-    this.modifyDate = modifyDate;
-    }
-
-    /**
-    * 
-    */
-    private void setModifiedBy(Long modifiedBy){
-    this.modifiedBy = modifiedBy;
-    }
-
-
-    /**
-    * 主键
-    */
-    private Long getId(){
-    return this.id;
-    }
-
-    /**
-    * 如果产品是酒店的话 改字段保存酒店id
-    */
-    private Long getHotelId(){
-    return this.hotelId;
-    }
-
-    /**
-    * 商品id
-    */
-    private Long getProductId(){
-    return this.productId;
-    }
-
-    /**
-    * 订单id
-    */
-    private Long getOrderId(){
-    return this.orderId;
-    }
-
-    /**
-    * 商品类型(0:旅游产品 1:酒店产品 2:机票产品)
-    */
-    private Integer getProductType(){
-    return this.productType;
-    }
-
-    /**
-    * 评论内容
-    */
-    private String getContent(){
-    return this.content;
-    }
-
-    /**
-    * 用户编号
-    */
-    private Long getUserId(){
-    return this.userId;
-    }
-
-    /**
-    * 是否包含图片(当用户上传评论时检测)0:无图片 1:有图片
-    */
-    private Integer getIsHavingImg(){
-    return this.isHavingImg;
-    }
-
-    /**
-    * 位置评分
-    */
-    private Integer getPositionScore(){
-    return this.positionScore;
-    }
-
-    /**
-    * 设施评分
-    */
-    private Integer getFacilitiesScore(){
-    return this.facilitiesScore;
-    }
-
-    /**
-    * 服务评分
-    */
-    private Integer getServiceScore(){
-    return this.serviceScore;
-    }
-
-    /**
-    * 卫生评分
-    */
-    private Integer getHygieneScore(){
-    return this.hygieneScore;
-    }
-
-    /**
-    * 综合评分
-    */
-    private Integer getScore(){
-    return this.score;
-    }
-
-    /**
-    * 出游类型
-    */
-    private Long getTripMode(){
-    return this.tripMode;
-    }
-
-    /**
-    * 是否满意（0：有待改善 1：值得推荐）
-    */
-    private Integer getIsOk(){
-    return this.isOk;
-    }
-
-    /**
-    * 
-    */
-    private Date getCreationDate(){
-    return this.creationDate;
-    }
-
-    /**
-    * 
-    */
-    private Long getCreatedBy(){
-    return this.createdBy;
-    }
-
-    /**
-    * 
-    */
-    private Date getModifyDate(){
-    return this.modifyDate;
-    }
-
-    /**
-    * 
-    */
-    private Long getModifiedBy(){
-    return this.modifiedBy;
-    }
-
 }

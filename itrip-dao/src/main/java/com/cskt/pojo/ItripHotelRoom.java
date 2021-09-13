@@ -1,303 +1,188 @@
 package com.cskt.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Length;
+import lombok.Data;
 
 /**
-* 酒店房间表
-* @TableName itrip_hotel_room
-*/
-public class ItripHotelRoom {
+ * 酒店房间表
+ * @TableName itrip_hotel_room
+ */
+@TableName(value ="itrip_hotel_room")
+@Data
+public class ItripHotelRoom implements Serializable {
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
-    * 主键
-    */
-    @ApiModelProperty("主键")
-    private Long id;
-    /**
-    * 酒店ID
-    */
-    @ApiModelProperty("酒店ID")
+     * 酒店ID
+     */
+    @TableField(value = "hotelId")
     private Long hotelId;
+
     /**
-    * 房间名称
-    */
-    @ApiModelProperty("房间名称")
-    @Length(max= 255,message="编码长度不能超过255")
+     * 房间名称
+     */
+    @TableField(value = "roomTitle")
     private String roomTitle;
+
     /**
-    * 房间价格
-    */
-    @ApiModelProperty("房间价格")
+     * 房间价格
+     */
+    @TableField(value = "roomPrice")
     private BigDecimal roomPrice;
+
     /**
-    * 酒店床型
-    */
-    @ApiModelProperty("酒店床型")
+     * 酒店床型
+     */
+    @TableField(value = "roomBedTypeId")
     private Long roomBedTypeId;
+
     /**
-    * 是否包含早餐
-    */
-    @ApiModelProperty("是否包含早餐")
+     * 是否包含早餐
+     */
+    @TableField(value = "isHavingBreakfast")
     private Integer isHavingBreakfast;
+
     /**
-    * 1:在线付 2:到店付 3:不限
-    */
-    @ApiModelProperty("1:在线付 2:到店付 3:不限")
+     * 1:在线付 2:到店付 3:不限
+     */
+    @TableField(value = "payType")
     private Integer payType;
+
     /**
-    * 满意度（冗余字段，在用户评论后更新）
-    */
-    @ApiModelProperty("满意度（冗余字段，在用户评论后更新）")
+     * 满意度（冗余字段，在用户评论后更新）
+     */
+    @TableField(value = "satisfaction")
     private Long satisfaction;
+
     /**
-    * 是否可预订(0:不可以 1:可以)
-    */
-    @ApiModelProperty("是否可预订(0:不可以 1:可以)")
+     * 是否可预订(0:不可以 1:可以)
+     */
+    @TableField(value = "isBook")
     private Integer isBook;
+
     /**
-    * 是否可取消(0:不可 1:可以)
-    */
-    @ApiModelProperty("是否可取消(0:不可 1:可以)")
+     * 是否可取消(0:不可 1:可以)
+     */
+    @TableField(value = "isCancel")
     private Integer isCancel;
+
     /**
-    * 是否及时响应(0:不及时 1:及时)
-    */
-    @ApiModelProperty("是否及时响应(0:不及时 1:及时)")
+     * 是否及时响应(0:不及时 1:及时)
+     */
+    @TableField(value = "isTimelyResponse")
     private Integer isTimelyResponse;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "creationDate")
     private Date creationDate;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "createdBy")
     private Long createdBy;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "modifyDate")
     private Date modifyDate;
+
     /**
-    * 
-    */
-    @ApiModelProperty("")
+     * 
+     */
+    @TableField(value = "modifiedBy")
     private Long modifiedBy;
 
-    /**
-    * 主键
-    */
-    private void setId(Long id){
-    this.id = id;
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        ItripHotelRoom other = (ItripHotelRoom) that;
+        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getHotelId() == null ? other.getHotelId() == null : this.getHotelId().equals(other.getHotelId()))
+            && (this.getRoomTitle() == null ? other.getRoomTitle() == null : this.getRoomTitle().equals(other.getRoomTitle()))
+            && (this.getRoomPrice() == null ? other.getRoomPrice() == null : this.getRoomPrice().equals(other.getRoomPrice()))
+            && (this.getRoomBedTypeId() == null ? other.getRoomBedTypeId() == null : this.getRoomBedTypeId().equals(other.getRoomBedTypeId()))
+            && (this.getIsHavingBreakfast() == null ? other.getIsHavingBreakfast() == null : this.getIsHavingBreakfast().equals(other.getIsHavingBreakfast()))
+            && (this.getPayType() == null ? other.getPayType() == null : this.getPayType().equals(other.getPayType()))
+            && (this.getSatisfaction() == null ? other.getSatisfaction() == null : this.getSatisfaction().equals(other.getSatisfaction()))
+            && (this.getIsBook() == null ? other.getIsBook() == null : this.getIsBook().equals(other.getIsBook()))
+            && (this.getIsCancel() == null ? other.getIsCancel() == null : this.getIsCancel().equals(other.getIsCancel()))
+            && (this.getIsTimelyResponse() == null ? other.getIsTimelyResponse() == null : this.getIsTimelyResponse().equals(other.getIsTimelyResponse()))
+            && (this.getCreationDate() == null ? other.getCreationDate() == null : this.getCreationDate().equals(other.getCreationDate()))
+            && (this.getCreatedBy() == null ? other.getCreatedBy() == null : this.getCreatedBy().equals(other.getCreatedBy()))
+            && (this.getModifyDate() == null ? other.getModifyDate() == null : this.getModifyDate().equals(other.getModifyDate()))
+            && (this.getModifiedBy() == null ? other.getModifiedBy() == null : this.getModifiedBy().equals(other.getModifiedBy()));
     }
 
-    /**
-    * 酒店ID
-    */
-    private void setHotelId(Long hotelId){
-    this.hotelId = hotelId;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getHotelId() == null) ? 0 : getHotelId().hashCode());
+        result = prime * result + ((getRoomTitle() == null) ? 0 : getRoomTitle().hashCode());
+        result = prime * result + ((getRoomPrice() == null) ? 0 : getRoomPrice().hashCode());
+        result = prime * result + ((getRoomBedTypeId() == null) ? 0 : getRoomBedTypeId().hashCode());
+        result = prime * result + ((getIsHavingBreakfast() == null) ? 0 : getIsHavingBreakfast().hashCode());
+        result = prime * result + ((getPayType() == null) ? 0 : getPayType().hashCode());
+        result = prime * result + ((getSatisfaction() == null) ? 0 : getSatisfaction().hashCode());
+        result = prime * result + ((getIsBook() == null) ? 0 : getIsBook().hashCode());
+        result = prime * result + ((getIsCancel() == null) ? 0 : getIsCancel().hashCode());
+        result = prime * result + ((getIsTimelyResponse() == null) ? 0 : getIsTimelyResponse().hashCode());
+        result = prime * result + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
+        result = prime * result + ((getCreatedBy() == null) ? 0 : getCreatedBy().hashCode());
+        result = prime * result + ((getModifyDate() == null) ? 0 : getModifyDate().hashCode());
+        result = prime * result + ((getModifiedBy() == null) ? 0 : getModifiedBy().hashCode());
+        return result;
     }
 
-    /**
-    * 房间名称
-    */
-    private void setRoomTitle(String roomTitle){
-    this.roomTitle = roomTitle;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", hotelId=").append(hotelId);
+        sb.append(", roomTitle=").append(roomTitle);
+        sb.append(", roomPrice=").append(roomPrice);
+        sb.append(", roomBedTypeId=").append(roomBedTypeId);
+        sb.append(", isHavingBreakfast=").append(isHavingBreakfast);
+        sb.append(", payType=").append(payType);
+        sb.append(", satisfaction=").append(satisfaction);
+        sb.append(", isBook=").append(isBook);
+        sb.append(", isCancel=").append(isCancel);
+        sb.append(", isTimelyResponse=").append(isTimelyResponse);
+        sb.append(", creationDate=").append(creationDate);
+        sb.append(", createdBy=").append(createdBy);
+        sb.append(", modifyDate=").append(modifyDate);
+        sb.append(", modifiedBy=").append(modifiedBy);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
-
-    /**
-    * 房间价格
-    */
-    private void setRoomPrice(BigDecimal roomPrice){
-    this.roomPrice = roomPrice;
-    }
-
-    /**
-    * 酒店床型
-    */
-    private void setRoomBedTypeId(Long roomBedTypeId){
-    this.roomBedTypeId = roomBedTypeId;
-    }
-
-    /**
-    * 是否包含早餐
-    */
-    private void setIsHavingBreakfast(Integer isHavingBreakfast){
-    this.isHavingBreakfast = isHavingBreakfast;
-    }
-
-    /**
-    * 1:在线付 2:到店付 3:不限
-    */
-    private void setPayType(Integer payType){
-    this.payType = payType;
-    }
-
-    /**
-    * 满意度（冗余字段，在用户评论后更新）
-    */
-    private void setSatisfaction(Long satisfaction){
-    this.satisfaction = satisfaction;
-    }
-
-    /**
-    * 是否可预订(0:不可以 1:可以)
-    */
-    private void setIsBook(Integer isBook){
-    this.isBook = isBook;
-    }
-
-    /**
-    * 是否可取消(0:不可 1:可以)
-    */
-    private void setIsCancel(Integer isCancel){
-    this.isCancel = isCancel;
-    }
-
-    /**
-    * 是否及时响应(0:不及时 1:及时)
-    */
-    private void setIsTimelyResponse(Integer isTimelyResponse){
-    this.isTimelyResponse = isTimelyResponse;
-    }
-
-    /**
-    * 
-    */
-    private void setCreationDate(Date creationDate){
-    this.creationDate = creationDate;
-    }
-
-    /**
-    * 
-    */
-    private void setCreatedBy(Long createdBy){
-    this.createdBy = createdBy;
-    }
-
-    /**
-    * 
-    */
-    private void setModifyDate(Date modifyDate){
-    this.modifyDate = modifyDate;
-    }
-
-    /**
-    * 
-    */
-    private void setModifiedBy(Long modifiedBy){
-    this.modifiedBy = modifiedBy;
-    }
-
-
-    /**
-    * 主键
-    */
-    private Long getId(){
-    return this.id;
-    }
-
-    /**
-    * 酒店ID
-    */
-    private Long getHotelId(){
-    return this.hotelId;
-    }
-
-    /**
-    * 房间名称
-    */
-    private String getRoomTitle(){
-    return this.roomTitle;
-    }
-
-    /**
-    * 房间价格
-    */
-    private BigDecimal getRoomPrice(){
-    return this.roomPrice;
-    }
-
-    /**
-    * 酒店床型
-    */
-    private Long getRoomBedTypeId(){
-    return this.roomBedTypeId;
-    }
-
-    /**
-    * 是否包含早餐
-    */
-    private Integer getIsHavingBreakfast(){
-    return this.isHavingBreakfast;
-    }
-
-    /**
-    * 1:在线付 2:到店付 3:不限
-    */
-    private Integer getPayType(){
-    return this.payType;
-    }
-
-    /**
-    * 满意度（冗余字段，在用户评论后更新）
-    */
-    private Long getSatisfaction(){
-    return this.satisfaction;
-    }
-
-    /**
-    * 是否可预订(0:不可以 1:可以)
-    */
-    private Integer getIsBook(){
-    return this.isBook;
-    }
-
-    /**
-    * 是否可取消(0:不可 1:可以)
-    */
-    private Integer getIsCancel(){
-    return this.isCancel;
-    }
-
-    /**
-    * 是否及时响应(0:不及时 1:及时)
-    */
-    private Integer getIsTimelyResponse(){
-    return this.isTimelyResponse;
-    }
-
-    /**
-    * 
-    */
-    private Date getCreationDate(){
-    return this.creationDate;
-    }
-
-    /**
-    * 
-    */
-    private Long getCreatedBy(){
-    return this.createdBy;
-    }
-
-    /**
-    * 
-    */
-    private Date getModifyDate(){
-    return this.modifyDate;
-    }
-
-    /**
-    * 
-    */
-    private Long getModifiedBy(){
-    return this.modifiedBy;
-    }
-
 }
